@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './UploadMaterial.css';
+import RecordAudioModal from './RecordAudioModal';
 
 const UploadMaterial = () => {
   const [audioFile, setAudioFile] = useState(null);
   const [videoFile, setVideoFile] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleAudioUpload = (event) => {
     setAudioFile(event.target.files[0]);
@@ -26,7 +28,10 @@ const UploadMaterial = () => {
 
         <div className="upload-areas">
           <div className="audio-section">
-            <div className="record-audio-box">
+            <div 
+              className="record-audio-box"
+              onClick={() => setIsModalOpen(true)}
+            >
               <div className="mic-icon">🎤</div>
               <p>Record audio</p>
             </div>
@@ -56,8 +61,13 @@ const UploadMaterial = () => {
           </div>
         </div>
       </div>
+
+      <RecordAudioModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };
 
-export default UploadMaterial; 
+export default UploadMaterial;
