@@ -33,7 +33,7 @@
   
   /* Set fixed height for both containers */
   .record-audio-box {
-    background-color: #f0f0f0;
+    background-color: #e0e0e0;
     border-radius: 8px;
     padding: 40px;
     text-align: center;
@@ -53,7 +53,7 @@
     padding: 40px;
     text-align: center;
     cursor: pointer;
-    border: 2px dashed #ccc;
+    border: 3px dashed #aaa;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -72,6 +72,7 @@
     justify-content: center;
     gap: 10px;
     height: 50px; /* Fixed height for the upload audio button */
+    border: 3px dashed #aaa;
   }
   
   .mic-icon, .upload-icon, .audio-icon {
