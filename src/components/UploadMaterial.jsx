@@ -32,7 +32,7 @@ const UploadMaterial = () => {
 
   return (
     <div className="upload-container">
-      <h1 className="creative-companion">Creative Companion</h1>
+      <h1 className="super-creator">dayinthetopic.ai</h1>
       
       <div className="material-section">
         <h2 className="title">Add Material (Video & Voice)</h2>
@@ -60,6 +60,23 @@ const UploadMaterial = () => {
                 hidden
               />
             </label>
+            {(audioFile || recordedAudioFile) && (
+              <div className="audio-list">
+                <h3>Uploaded Audio:</h3>
+                <div className="file-names-stack">
+                  {audioFile && (
+                    <div className="file-name-box">
+                      {audioFile.name}
+                    </div>
+                  )}
+                  {recordedAudioFile && (
+                    <div className="file-name-box">
+                      {recordedAudioFile.name}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="video-section">
@@ -77,11 +94,13 @@ const UploadMaterial = () => {
             {videoFiles.length > 0 && (
               <div className="video-list">
                 <h3>Uploaded Videos:</h3>
-                <ul>
+                <div className="file-names-stack">
                   {videoFiles.map((file, index) => (
-                    <li key={index}>{file.name}</li>
+                    <div key={index} className="file-name-box">
+                      {file.name}
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
           </div>

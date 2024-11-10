@@ -92,7 +92,7 @@
   .submit-button {
     margin-top: 20px;
     padding: 12px 24px;
-    background-color: #007bff;
+    background-color: #000; /* Change to black */
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -101,10 +101,37 @@
   }
   
   .submit-button:hover {
-    background-color: #0056b3;
+    background-color: #333;
   }
 
   .submit-button:disabled {
-    background-color: #999;
+    background-color: #666;
     cursor: not-allowed;
+  }
+
+  .file-names-stack {
+    margin-top: 10px;
+  }
+  
+  .file-name-box {
+    background-color: #f9f9f9;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .file-name-box:before {
+    content: '📄';
+    margin-right: 8px;
+  }
+  
+  .video-list h3,
+  .audio-list h3 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #333;
   }
