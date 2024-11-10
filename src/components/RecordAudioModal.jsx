@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './RecordAudioModal.css';
 
-const RecordAudioModal = ({ isOpen, onClose }) => {
+const RecordAudioModal = ({ isOpen, onClose, onAudioRecorded }) => {
   const [isRecording, setIsRecording] = useState(false);
-  const [timer, setTimer] = useState(0);
+  const mediaRecorder = useRef(null);
+  const [recordedChunks, setRecordedChunks] = useState([]);
 
   const handleStartRecording = () => {
     setIsRecording(true);
-    // Add actual recording logic here
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+        mediaRecorder.current = new MediaRecorder(stream);
+        mediaRecorder.current.ondataavailable = event => {
+          if (event.data.size > 0) {
+            setRecordedChunks(prev => [...prev, event.data]);
+          }
+        };
+        mediaRecorder.current.start();
+      })
+      .catch(error => {
+        console.error('Error accessing microphone:', error);
+      });
   };
 
   const handleStopRecording = () => {
+    mediaRecorder.current.stop();
     setIsRecording(false);
-    // Add stop recording logic here
+
+    const audioBlob = new Blob(recordedChunks, { type: 'audio/webm' });
+    const audioFile = new File([audioBlob], 'recorded_audio.webm', {
+      type: 'audio/webm',
+    });
+    onAudioRecorded(audioFile);
+    setRecordedChunks([]); // Clear recorded chunks
   };
 
   if (!isOpen) return null;

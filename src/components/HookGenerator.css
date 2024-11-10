@@ -61,6 +61,11 @@
     box-shadow: 0 8px 15px rgba(0,0,0,0.2);
   }
   
+  .hook-card.selected {
+    border: 2px solid #007bff;
+    transform: scale(1.02);
+  }
+  
   .script-dropdown select {
     width: 100%;
     padding: 15px;
@@ -103,4 +108,24 @@
     white-space: pre-line;
     text-align: left;
     line-height: 1.5;
+  }
+
+  .submit-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+
+  .submit-button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
   }

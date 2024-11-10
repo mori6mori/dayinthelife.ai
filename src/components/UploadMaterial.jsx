@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './UploadMaterial.css';
 import RecordAudioModal from './RecordAudioModal';
 
 const UploadMaterial = () => {
   const [audioFile, setAudioFile] = useState(null);
-  const [videoFile, setVideoFile] = useState(null);
+  const [videoFiles, setVideoFiles] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [recordedAudioFile, setRecordedAudioFile] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
   const handleAudioUpload = (event) => {
     setAudioFile(event.target.files[0]);
   };
 
   const handleVideoUpload = (event) => {
-    setVideoFile(event.target.files[0]);
+    const files = Array.from(event.target.files);
+    setVideoFiles(files);
+  };
+
+  const handleSubmit = () => {
+    setIsSubmitting(true);
+
+    // Simulate a 3-second wait
+    setTimeout(() => {
+      setIsSubmitting(false);
+      navigate('/hook-generator');
+    }, 3000);
   };
 
   return (
@@ -50,21 +65,36 @@ const UploadMaterial = () => {
           <div className="video-section">
             <label className="upload-video-box">
               <div className="upload-icon">⬆️</div>
-              <p>Upload video</p>
+              <p>Upload videos</p>
               <input
                 type="file"
                 accept="video/*"
+                multiple
                 onChange={handleVideoUpload}
                 hidden
               />
             </label>
+            {videoFiles.length > 0 && (
+              <div className="video-list">
+                <h3>Uploaded Videos:</h3>
+                <ul>
+                  {videoFiles.map((file, index) => (
+                    <li key={index}>{file.name}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
+        <button className="submit-button" onClick={handleSubmit} disabled={isSubmitting}>
+          {isSubmitting ? 'Processing...' : 'Submit'}
+        </button>
       </div>
 
       <RecordAudioModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onAudioRecorded={(file) => setRecordedAudioFile(file)}
       />
     </div>
   );
