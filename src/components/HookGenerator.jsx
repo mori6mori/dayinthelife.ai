@@ -8,7 +8,7 @@ const HookGenerator = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isPersonaOpen, setIsPersonaOpen] = useState(false);
 
-  const modes = ['Violent Mode', 'Bedtime Mode', 'Adventure Mode'];
+  const modes = ['Cringe Mode', 'Bedtime Story Mode', 'Roasting Mode'];
   const [selectedMode, setSelectedMode] = useState(modes[0]);
 
   const hooksData = [
@@ -65,12 +65,12 @@ const HookGenerator = () => {
 
   return (
     <div className="hook-generator-container">
-      <h1 className="super-creator">dayinthetopic.ai</h1>
+      <h1 className="super-creator">Dayinthelife.ai</h1>
 
       <div className="generator-content">
         <h2 className="main-title">Hook & Video Structure Generation</h2>
         <p className="subtitle">
-          Select the story card you like the most and proceed to generating the final script!
+          Select your favorite story and proceed to generating a viral video!
         </p>
 
         {/* Mode Selector */}

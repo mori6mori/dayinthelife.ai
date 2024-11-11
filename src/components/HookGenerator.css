@@ -5,9 +5,25 @@
 }
 
 .super-creator {
+  background: linear-gradient(30deg, #bb5bff, #78d0ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
   font-size: 2.5rem;
-  margin-bottom: 20px;
 }
+
+/* @keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */
 
 .main-title {
   font-size: 2.8rem;
@@ -171,11 +187,12 @@
 .modes {
   display: flex;
   gap: 15px;
+  justify-content: center; 
 }
 
 .mode-option {
   padding: 10px 20px;
-  background-color: #000; /* Black background */
+  background-color: #60c5ff; /* Black background */
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
@@ -184,13 +201,13 @@
 }
 
 .mode-option.selected {
-  background-color: #333; /* Darker shade when selected */
+  background-color: #4992ff; /* Darker shade when selected */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: scale(1.05); /* Slightly enlarge */
 }
 
 .mode-option:hover {
-  background-color: #111; /* Darker on hover */
+  background-color: #4992ff; /* Darker on hover */
 }
 
 .persona-analysis {

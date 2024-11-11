@@ -1,11 +1,11 @@
-// In VideoDisplay.jsx
 import React from 'react';
+import './VideoDisplay.css';
 
 const VideoDisplay = () => {
   return (
     <div className="video-display-container">
-      <h1 className="text-3xl font-bold mb-4">Generated Video</h1>
-      <video controls src="/video.mp4" className="w-full h-auto"></video>
+      <h1 className="video-title">Generated Video</h1>
+      <video controls src="/video2.mp4" className="video-player"></video>
     </div>
   );
 };
